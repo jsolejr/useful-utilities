@@ -15,10 +15,10 @@ This Python script extracts email addresses from CSV files located in a specifie
 3. Update the `input_directory` variable in the script with the path to your directory containing the CSV files. By default, it is set to:
 
 ```python
-input_directory = r'C:\Users\jsole\Auto-GPT\autogpt\auto_gpt_workspace\WFO_users'
+input_directory = r'Input\path\here'
 ```
 
-4. Update the `output_file` variable in the script with the desired name for the output text file. By default, it is set to:
+4. Update the 'output\path\here` variable in the script with the desired name for the output text file. By default, it is set to:
 
 ```python
 output_file = 'output_emails.txt'
