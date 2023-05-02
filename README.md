@@ -1,13 +1,13 @@
-# useful-utilities
+# Useful-Utilities
 A hodge podge of utilities to do different things I've come across while working.
 
 
 
 
 
-Create extract_email_from_csv.py
-# Email Extractor from CSV Files
 
+# Email Extractor from CSV Files
+Create extract_email_from_csv.py
 This Python script extracts email addresses from CSV files located in a specified directory and saves the extracted emails to a text file.
 
 ## Usage
