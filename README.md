@@ -50,3 +50,49 @@ The script will process all CSV files in the specified directory, extract email 
 ## Limitations
 
 This script assumes that the CSV files use any whitespace character as a delimiter. If your CSV files use a different delimiter, you may need to modify the script accordingly.
+
+
+
+# Webpage Metadata Extractor
+
+This Python script fetches and extracts metadata from a specified URL using the `requests` and `BeautifulSoup` libraries. It returns a list of dictionaries containing the metadata properties and their corresponding values.
+
+## Usage
+
+1. Ensure you have Python 3.x installed on your system.
+2. Install the required libraries using the following commands:
+
+```bash
+pip install requests
+pip install beautifulsoup4
+```
+
+3. Place the `metadata_extractor.py` script in a directory of your choice.
+4. Import the `get_metadata` function from the script in your Python project:
+
+```python
+from metadata_extractor import get_metadata
+```
+
+5. Call the `get_metadata` function with the URL you want to extract metadata from:
+
+```python
+url = "https://example.com"
+metadata_list = get_metadata(url)
+```
+
+The `metadata_list` variable will contain a list of dictionaries with metadata properties and their corresponding values.
+
+## Requirements
+
+- Python 3.x
+- `requests` library (install using `pip install requests`)
+- `beautifulsoup4` library (install using `pip install beautifulsoup4`)
+
+## Functions
+
+- `get_metadata(url)`: Fetches the specified URL, extracts metadata from the webpage, and returns a list of dictionaries containing metadata properties and their corresponding values.
+
+## Limitations
+
+This script extracts metadata properties that have either the `property` or `name` attribute in their corresponding `meta` tags. If a webpage contains metadata in a different format, you may need to modify the script accordingly.
