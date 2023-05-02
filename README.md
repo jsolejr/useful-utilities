@@ -96,3 +96,42 @@ The `metadata_list` variable will contain a list of dictionaries with metadata p
 ## Limitations
 
 This script extracts metadata properties that have either the `property` or `name` attribute in their corresponding `meta` tags. If a webpage contains metadata in a different format, you may need to modify the script accordingly.
+
+
+Sure, here's an example README.md file for this Python script:
+
+# OCR Text Extractor
+
+This is a Python script that can be used to extract text from image or PDF files using OCR (optical character recognition).
+
+## Requirements
+
+- Python 3.x
+- `pytesseract` module
+- `PyPDF4` module
+- `Pillow` module
+- `tkinter` module (included with Python)
+
+You can install the required Python modules using `pip`, the package manager for Python. For example, to install `pytesseract`, you can run the following command in your terminal or command prompt:
+
+```
+pip install pytesseract
+```
+
+## Usage
+
+1. Open a terminal or command prompt and navigate to the directory containing the `ocr_text_extractor.py` file.
+2. Run the following command:
+
+   ```
+   python ocr_text_extractor.py
+   ```
+
+3. The script will prompt you to select an input file using a file dialog. You can select an image or PDF file.
+4. The script will extract the text from the input file using OCR and save it to a .txt file with the same name as the input file, in the same directory.
+
+## Limitations
+
+- The OCR accuracy depends on the quality of the input file and the fonts used in the text.
+- The script currently only supports the following image file types: .jpg, .jpeg, .png, .bmp, .gif. If you try to use an unsupported file type, the script will raise a ValueError.
+- The script currently only supports the PyPDF4 module for extracting text from PDF files. If you have a PDF file that uses a different PDF library or format, you may need to modify the script to support it.
