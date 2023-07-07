@@ -135,3 +135,56 @@ pip install pytesseract
 - The OCR accuracy depends on the quality of the input file and the fonts used in the text.
 - The script currently only supports the following image file types: .jpg, .jpeg, .png, .bmp, .gif. If you try to use an unsupported file type, the script will raise a ValueError.
 - The script currently only supports the PyPDF4 module for extracting text from PDF files. If you have a PDF file that uses a different PDF library or format, you may need to modify the script to support it.
+
+Certainly! Here's an example of a README.md file for your program:
+
+```markdown
+
+
+
+# Excel Search Program
+
+This Python program allows you to search for values in an Excel workbook based on a list of study descriptions. It provides a user-friendly interface where you can select the input file, search the workbook, and generate a list of values that were not found.
+
+## Requirements
+
+- Python 3.x
+- openpyxl library
+
+## Installation
+
+1. Clone or download the repository.
+2. Install the required dependencies using pip:
+
+   ```shell
+   pip install openpyxl
+   ```
+
+## Usage
+
+1. Run the program by executing the `SearchExcelForMissingValues.py` file.
+2. Select the input file when prompted. This file should contain a list of study descriptions, with each description on a separate line.
+3. Select the Excel workbook file when prompted. The program will search for the study descriptions in column K of each sheet in the workbook.
+4. After the search is complete, a dialog box will display the results. If any values were not found in the workbook, they will be listed.
+5. Click the "Save" button to select a save location and save the list of not found values to a text file. Alternatively, click the "Close" button to exit the program.
+
+## Example
+
+Suppose you have an input file named `study_descriptions.txt` containing the following study descriptions:
+
+```
+Study A
+Study B
+Study C
+```
+
+And you have an Excel workbook named `data.xlsx` with multiple sheets. The program will search for these study descriptions in column K of each sheet in the workbook and generate a list of any descriptions that were not found.
+
+## License
+
+This program is licensed under the [MIT License](LICENSE).
+```
+
+Feel free to customize the README.md file as per your specific requirements and add any additional sections or information you deem necessary.
+
+Let me know if you need further assistance!
