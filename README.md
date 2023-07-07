@@ -142,43 +142,41 @@ Certainly! Here's an example of a README.md file for your program:
 
 
 
-# Excel Search Program
+Sure, here's a sample README file for the script:
 
-This Python program allows you to search for values in an Excel workbook based on a list of study descriptions. It provides a user-friendly interface where you can select the input file, search the workbook, and generate a list of values that were not found.
+# Excel Matching Python Script
+
+## Description
+This Python script accepts a text file and an Excel file as inputs. It reads each line from the text file, and then checks if the line exists in any cell in any sheet of the Excel file. The comparison is case-insensitive. If a line from the text file does not match any cell in the Excel file, it is considered a 'No Match'. The script outputs a text file containing all 'No Match' lines.
 
 ## Requirements
 
-- Python 3.x
-- openpyxl library
+- Python 3
+- Openpyxl module
 
-## Installation
+You can install the required Python module with pip:
 
-1. Clone or download the repository.
-2. Install the required dependencies using pip:
-
-   ```shell
-   pip install openpyxl
-   ```
-
-## Usage
-
-1. Run the program by executing the `SearchExcelForMissingValues.py` file.
-2. Select the input file when prompted. This file should contain a list of study descriptions, with each description on a separate line.
-3. Select the Excel workbook file when prompted. The program will search for the study descriptions in column K of each sheet in the workbook.
-4. After the search is complete, a dialog box will display the results. If any values were not found in the workbook, they will be listed.
-5. Click the "Save" button to select a save location and save the list of not found values to a text file. Alternatively, click the "Close" button to exit the program.
-
-## Example
-
-Suppose you have an input file named `study_descriptions.txt` containing the following study descriptions:
-
-```
-Study A
-Study B
-Study C
+```sh
+pip install openpyxl
 ```
 
-And you have an Excel workbook named `data.xlsx` with multiple sheets. The program will search for these study descriptions in column K of each sheet in the workbook and generate a list of any descriptions that were not found.
+## How to Run
+
+1. Run the script in a Python environment. 
+2. A dialog box will open, prompting you to "Select the input file". This should be a text file with one value per line.
+3. Next, a dialog box will open, asking you to "Select the Excel file". This file should contain the values you wish to compare against. 
+4. After the search is completed, a final dialog box will appear, asking you where to "Save the output file". This file will contain all the values from the input file that did not match a cell in the Excel file.
+
+## Output
+
+The output text file will contain one line for each 'No Match' value from the input file. The script does not output matches.
+
+## Notes
+
+- This script is read-only and will not modify your Excel file.
+- The script assumes the input file is a text file with one value per line. If your input file is structured differently, the script will need adjustments.
+- The script will search through all sheets and all cells in the Excel workbook, making it suitable for multi-sheet workbooks.
+- The script is case-insensitive. For instance, "Test" in the input file would match "test" in the Excel file.
 
 ## License
 
