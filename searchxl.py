@@ -1,95 +1,55 @@
-# Small utility to ask user for an input file 
-# containing a list of values (in this example it is a text string)
-# and parse a spreadsheet for the existance of a value within the entire woorkbook
-
 import tkinter as tk
 from tkinter import filedialog
-from tkinter import messagebox
-from tkinter import ttk
 from openpyxl import load_workbook
 
-# Function to handle the search and generate the output
-def search_in_workbook():
-    # Ask user to select the input file
-    input_file_path = filedialog.askopenfilename(title="Select Input File", filetypes=(("Text Files", "*.txt"),))
+# Create root window and hide it
+root = tk.Tk()
+root.withdraw()
 
-    if input_file_path:
-        # Ask user to select the workbook file
-        workbook_path = filedialog.askopenfilename(title="Select Workbook", filetypes=(("Excel Files", "*.xlsx"),))
+# Get input file path from user
+input_file_path = filedialog.askopenfilename(title="Select the input file")
+with open(input_file_path, 'r') as f:
+    lines = f.read().splitlines()
 
-        if workbook_path:
-            # Load the workbook
-            wb = load_workbook(workbook_path)
+# Get Excel file path from user
+excel_file_path = filedialog.askopenfilename(title="Select the Excel file")
 
-            # Get all sheet names from the workbook
-            sheet_names = wb.sheetnames
+# Load the Excel workbook
+wb = load_workbook(filename=excel_file_path, read_only=True)
 
-            # Read each line from the input file
-            not_found_values = []
-            with open(input_file_path, 'r') as input_file:
-                for line in input_file:
-                    search_value = line.strip()
+# Create a list to store no match results
+no_match_values = []
 
-                    # Search for the value in each sheet of the workbook
-                    found = False
-                    for sheet_name in sheet_names:
-                        sheet = wb[sheet_name]
-                        for row in sheet.iter_rows():
-                            for cell in row:
-                                if cell.value == search_value:
-                                    found = True
-                                    break
-                            if found:
-                                break
-                        if found:
-                            break
+# Iterate over input values
+for line in lines:
+    # Assume no match until found
+    match_found = False
+    # Iterate over sheets and cells
+    for sheet in wb:
+        for row in sheet.iter_rows():
+            for cell in row:
+                # Check if cell value matches input value
+                if cell.value is not None and str(cell.value).lower() == line.lower():
+                    # Match found
+                    match_found = True
+                    # Skip to next line
+                    break
+            # Break nested loop if match found
+            if match_found:
+                break
+        # Break loop over sheets if match found
+        if match_found:
+            break
+    # If no match found after checking all cells, add to no match list
+    if not match_found:
+        no_match_values.append(line)
 
-                    # Add the value to the not found list if not found in any sheet
-                    if not found:
-                        not_found_values.append(search_value)
+# Get output file path from user
+output_file_path = filedialog.asksaveasfilename(title="Save the output file", defaultextension=".txt")
 
-            # Close the workbook
-            wb.close()
+# Write no match values to output file
+with open(output_file_path, 'w') as f:
+    for value in no_match_values:
+        f.write(f'{value}\n')
 
-            # Generate the output message
-            if not_found_values:
-                output_message = "Values not found:\n\n" + "\n".join(not_found_values)
-            else:
-                output_message = "All values found!"
-
-            # Create the root window
-            root = tk.Tk()
-            root.withdraw()
-
-            # Create a frame for the text area and scrollbar
-            frame = ttk.Frame(root)
-            frame.pack(fill=tk.BOTH, expand=True)
-
-            # Create a vertical scrollbar
-            scrollbar = ttk.Scrollbar(frame, orient=tk.VERTICAL)
-
-            # Create a text area to display the results
-            output_text = tk.Text(frame, wrap=tk.WORD, yscrollcommand=scrollbar.set)
-            output_text.insert(tk.END, output_message)
-            output_text.configure(state='disabled')
-
-            # Configure the scrollbar
-            scrollbar.config(command=output_text.yview)
-
-            # Pack the text area and scrollbar
-            output_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-            scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-
-            result = messagebox.askyesno("Search Result", "", icon='info', detail=output_message, parent=root)
-
-            # Handle the button clicks
-            if result:
-                # Ask user to select the save location
-                save_file_path = filedialog.asksaveasfilename(defaultextension='.txt', filetypes=(("Text Files", "*.txt"),))
-                if save_file_path:
-                    with open(save_file_path, 'w') as save_file:
-                        save_file.write("\n".join(not_found_values))
-                    messagebox.showinfo("Save Successful", "File saved successfully!")
-
-# Call the search function
-search_in_workbook()
+print(f"Completed. No match values have been saved to {output_file_path}.")
