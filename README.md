@@ -141,9 +141,6 @@ Certainly! Here's an example of a README.md file for your program:
 ```markdown
 
 
-
-Sure, here's a sample README file for the script:
-
 # Excel Matching Python Script
 
 ## Description
