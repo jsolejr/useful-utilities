@@ -98,7 +98,7 @@ The `metadata_list` variable will contain a list of dictionaries with metadata p
 This script extracts metadata properties that have either the `property` or `name` attribute in their corresponding `meta` tags. If a webpage contains metadata in a different format, you may need to modify the script accordingly.
 
 
-Sure, here's an example README.md file for this Python script:
+
 
 # OCR Text Extractor
 
@@ -136,15 +136,14 @@ pip install pytesseract
 - The script currently only supports the following image file types: .jpg, .jpeg, .png, .bmp, .gif. If you try to use an unsupported file type, the script will raise a ValueError.
 - The script currently only supports the PyPDF4 module for extracting text from PDF files. If you have a PDF file that uses a different PDF library or format, you may need to modify the script to support it.
 
-Certainly! Here's an example of a README.md file for your program:
-
-```markdown
 
 
 # Excel Matching Python Script
 
 ## Description
-This Python script accepts a text file and an Excel file as inputs. It reads each line from the text file, and then checks if the line exists in any cell in any sheet of the Excel file. The comparison is case-insensitive. If a line from the text file does not match any cell in the Excel file, it is considered a 'No Match'. The script outputs a text file containing all 'No Match' lines.
+This Python script accepts a text file and an Excel file as inputs. It reads each line from the text file, and then checks if the line exists in any cell in any sheet of the Excel file.
+The comparison is case-insensitive. If a line from the text file does not match any cell in the Excel file, it is considered a 'No Match'. 
+The script outputs a text file containing all 'No Match' lines.
 
 ## Requirements
 
@@ -162,7 +161,8 @@ pip install openpyxl
 1. Run the script in a Python environment. 
 2. A dialog box will open, prompting you to "Select the input file". This should be a text file with one value per line.
 3. Next, a dialog box will open, asking you to "Select the Excel file". This file should contain the values you wish to compare against. 
-4. After the search is completed, a final dialog box will appear, asking you where to "Save the output file". This file will contain all the values from the input file that did not match a cell in the Excel file.
+4. After the search is completed, a final dialog box will appear, asking you where to "Save the output file". This file will contain all
+the values from the input file that did not match a cell in the Excel file.
 
 ## Output
 
